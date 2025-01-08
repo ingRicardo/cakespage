@@ -33,7 +33,7 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^12.0.0",
+    "@testing-library/react": "^19.0.0",
     "@testing-library/jest-dom": "^6.6.3",
     "web-vitals": "^4.2.4"
   }
