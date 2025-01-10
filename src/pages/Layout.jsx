@@ -1,23 +1,10 @@
-import { Outlet, Link } from "react-router-dom";
-import { styled } from '@mui/material/styles';
+import { Outlet } from "react-router-dom";
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid2';
 import '../Layout.css';
 import logo from '../logo.svg';
 import Button from '@mui/material/Button';
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
-    
-     
-    textAlign: 'center',
-    margin: '0%',
-    fontSize: '40px',
-    color: theme.palette.text.secondary,
-    ...theme.applyStyles('dark', {
-      backgroundColor: '#1A2027',
-    }),
-  }));
+ 
   
  // <Link to="/">Home</Link>
 const Layout = () => {
