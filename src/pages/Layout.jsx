@@ -35,7 +35,7 @@ const Layout = () => {
         <Grid size={{ xs: 4, md: 3 }}>
            
              
-            <Button href="/blogs" variant="contained"  style={{ width: '100%', height: '100%' }}>
+            <Button href="https://mycakes-ae2c9.web.app/blogs" variant="contained"  style={{ width: '100%', height: '100%' }}>
             Blogs
             </Button>  
           
