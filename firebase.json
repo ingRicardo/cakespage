@@ -2,7 +2,7 @@
 
 {
     "hosting": {
-        "public": "https://mycakes-ae2c9.web.app/build",
+        "public": "my-app-cakes/build",
         "ignore": [
             "firebase.json",
             "**/.*",
