@@ -8,41 +8,41 @@ import Stack from '@mui/material/Stack';
 import '../css/Home.css'
 const MUI_X_PRODUCTS = [
   {
-    id: 'grid',
+    id: 'Bread',
     label: 'Bread',
     children: [
-      { id: 'grid-bread-choco', label: 'Chocolate' },
-      { id: 'grid-bread-vanilla', label: 'Vanilla' },
+      { id: 'Chocolate-Bread', label: 'Chocolate' },
+      { id: 'Vanilla-Bread', label: 'Vanilla' },
     ],
   },
   {
-    id: 'grid-fill',
+    id: 'Filling',
     label: 'Filling',
     children: [
-      { id: 'grid-fill-bana', label: 'Banana' },
-      { id: 'grid-fill-crea', label: 'Cream' },
+      { id: 'Banana-Filling', label: 'Banana' },
+      { id: 'Cream-Filling', label: 'Cream' },
     ],
   },
   {
-    id: 'grid-cover',
+    id: 'Cover',
     label: 'Cover',
-    children: [{ id: 'grid-cover-chan', label: 'Chantilly Cream' },
-               { id: 'grid-cover-butt', label: 'Butter Cream' }
+    children: [{ id: 'Chantilly-Cream-Cover', label: 'Chantilly Cream' },
+               { id: 'Butter-Cream-Cover', label: 'Butter Cream' }
     ],
   },
   {
-    id: 'grid-decoration',
+    id: 'Decoration',
     label: 'Decoration',
-    children: [{ id: 'grid-deco-birth', label: 'Birthday' },
-               { id: 'grid-deco-wedd', label: 'weedings' }
+    children: [{ id: 'Birthday-Decoration', label: 'Birthday' },
+               { id: 'Weedings-Decoration', label: 'Weedings' }
     ],
   },
   {
-    id: 'grid-size',
+    id: 'Size',
     label: 'Size',
-    children: [{ id: 'grid-size-small', label: 'Small' },
-               { id: 'grid-size-medium', label: 'Medium' },
-               { id: 'grid-size-large', label: 'Large' }
+    children: [{ id: 'Small-Size', label: 'Small' },
+               { id: 'Medium-Size', label: 'Medium' },
+               { id: 'Large-Size', label: 'Large' }
     ],
   },
 ];
