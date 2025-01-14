@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import Stack from '@mui/material/Stack';
 import '../css/Home.css'
+import { useState } from 'react';
 
 import { useTreeViewApiRef } from '@mui/x-tree-view/hooks';
 
@@ -52,18 +53,24 @@ const MUI_X_PRODUCTS = [
 
 
 const Home = () => {
+  const [list, setList] = React.useState([]);
 
   const apiRef = useTreeViewApiRef();
 
   const [lastSelectedItem, setLastSelectedItem] = React.useState(null);
 
   const [selectedItem, setSelectedItem] = React.useState(null);
-
+ 
   const handleSelectedItemsChange = (event, itemId) => {
     if (itemId == null) {
       setSelectedItem(null);
     } else {
       setSelectedItem(apiRef.current.getItem(itemId));
+      console.log(itemId);
+      const newList = list.concat({ itemId });
+
+      
+      setList(newList);
     }
   };
 
@@ -113,6 +120,12 @@ const Home = () => {
                              
                             { selectedItem == null ? ' none' : ( selectedItem.price )  }
           </Typography>
+
+          <ul>
+            {list.map((item) => (
+            <li key={item.itemId}>{item.itemId}</li>
+           ))}
+      </ul>
         </Grid>
       </Grid>
     </Box>
