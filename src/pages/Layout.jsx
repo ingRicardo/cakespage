@@ -7,11 +7,9 @@ import Button from '@mui/material/Button';
  
  // <Link to="/">Home</Link>
 const Layout = () => {
-
   
   return (
     <>
-
 
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>

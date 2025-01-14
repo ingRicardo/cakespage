@@ -9,9 +9,6 @@ import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 
 
-
-
-
 function App() {
   return (
     <BrowserRouter>
