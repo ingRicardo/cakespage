@@ -83,7 +83,6 @@ const Home = () => {
          }
          setList(listtmp);
          setTotal(tot);
-         console.log(total);
       }
   
     }
