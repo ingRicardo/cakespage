@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import Stack from '@mui/material/Stack';
 import '../css/Home.css'
+import Button from '@mui/material/Button';
 
 import { useTreeViewApiRef } from '@mui/x-tree-view/hooks';
 
@@ -56,8 +57,6 @@ const Home = () => {
 
   const apiRef = useTreeViewApiRef();
 
-  const [lastSelectedItem, setLastSelectedItem] = React.useState(null);
-
   const [selectedItem, setSelectedItem] = React.useState(null);
  
   const handleSelectedItemsChange = (event, itemId) => {
@@ -65,20 +64,34 @@ const Home = () => {
       setSelectedItem(null);
     } else {
       setSelectedItem(apiRef.current.getItem(itemId));
-      console.log(itemId);
-      const newList = list.concat({ itemId });
+   
+      if(apiRef.current.getItem(itemId).price){
+        const newList = list.concat({ id: itemId, label:  apiRef.current.getItem(itemId).label , price: apiRef.current.getItem(itemId).price} );
+          
+        setList(newList);
 
-      
-      setList(newList);
-    }
-  };
+         const uniqIds = [...new Set(newList.map(item => (  item.id  )))]
+         const uniqLabels = [...new Set(newList.map(item => (  item.label  )))]
+         const uniqPrices = [...new Set(newList.map(item => (  item.price  )))]
 
-  const handleItemSelectionToggle = (event, itemId, isSelected) => {
-    if (isSelected) {
-      setLastSelectedItem(itemId);
+         var listtmp =[];
+         for (let i = 0; i < uniqIds.length; i++) {
+           listtmp = listtmp.concat({ id: uniqIds[i], label:  uniqLabels[i] , price: uniqPrices[i]} );
+         }
+         setList(listtmp);
+
+      }
   
     }
   };
+
+ 
+  function handleRemove() {
+ 
+    setList([]);
+ 
+  }
+
 
     return (
     <>
@@ -89,14 +102,11 @@ const Home = () => {
           <Box sx={{ minHeight: 352, minWidth: 250 }}>
           <Stack spacing={2}>
       <Typography>
-        <b>Create Your Cake:</b>
+        <b>Select Your Ingredients:</b>
       </Typography>
         <Box sx={{ minHeight: 352, minWidth: 300 }}>
           <RichTreeView
             items={MUI_X_PRODUCTS}
-            
-            onItemSelectionToggle={handleItemSelectionToggle}
-
             apiRef={apiRef}
             selectedItems={selectedItem?.id ?? null}
             onSelectedItemsChange={handleSelectedItemsChange}
@@ -108,23 +118,23 @@ const Home = () => {
       </Grid>
         <Grid size={{ xs: 8, md: 10 }}>
           <h1>Home</h1>
-          <Typography>
-            {lastSelectedItem == null
-              ? 'No item selection recorded'
-              : `Last selected item id: ${lastSelectedItem}`}
-          </Typography>
- 
-          <Typography sx={{ minWidth: 300 }}>
-            Selected item : {selectedItem == null ? 'none' : ( selectedItem.label + " " ) } 
-                             
-                            { selectedItem == null ? ' none' : ( selectedItem.price )  }
-          </Typography>
-
+          {list && list.length >0
+            ? (<div className='containerTitle'>
+              <Typography>
+                <b>Create Your Cake:</b>
+                <Button type="button" onClick={handleRemove}>
+                  X
+                </Button>
+              </Typography>
+              </div> )
+            : (<p>Select Cake's Ingredients from left menu</p>)
+          }
           <ul>
             {list.map((item) => (
-            <li key={item.itemId}>{item.itemId}</li>
+            <li key={item.id}>{item.id} ,{item.label} , $ {item.price}</li>
            ))}
-      </ul>
+          </ul>
+           
         </Grid>
       </Grid>
     </Box>
