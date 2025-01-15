@@ -102,12 +102,12 @@ const Home = () => {
       <Grid container spacing={2} >
         <Grid size={{ xs: 12, md: 2 }}>
           <h1>Menu</h1>
-          <Box sx={{ minHeight: 352, minWidth: 250 }}>
+          <Box sx={{   minWidth: 250 }}>
           <Stack spacing={2}>
       <Typography>
         <b>Select Your Ingredients:</b>
       </Typography>
-        <Box sx={{ minHeight: 352, minWidth: 300 }}>
+        <Box sx={{   minWidth: 300 }}>
           <RichTreeView
             items={MUI_X_PRODUCTS}
             apiRef={apiRef}
