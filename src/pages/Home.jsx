@@ -10,6 +10,56 @@ import Button from '@mui/material/Button';
 
 import { useTreeViewApiRef } from '@mui/x-tree-view/hooks';
 
+
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { styled, alpha } from '@mui/material/styles';
+import { TreeItem, treeItemClasses } from '@mui/x-tree-view/TreeItem';
+
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import CakeIcon from '@mui/icons-material/Cake';
+
+const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
+  color: theme.palette.grey[200],
+  [`& .${treeItemClasses.content}`]: {
+    borderRadius: theme.spacing(0.5),
+    padding: theme.spacing(0.5, 1),
+    margin: theme.spacing(0.2, 0),
+    [`& .${treeItemClasses.label}`]: {
+      fontSize: '1.2rem',
+      fontWeight: 500,
+    },
+  },
+  [`& .${treeItemClasses.iconContainer}`]: {
+    borderRadius: '50%',
+    backgroundColor: theme.palette.primary.dark,
+    padding: theme.spacing(0, 1.2),
+    ...theme.applyStyles('light', {
+      backgroundColor: alpha(theme.palette.primary.main, 0.25),
+    }),
+    ...theme.applyStyles('dark', {
+      color: theme.palette.primary.contrastText,
+    }),
+  },
+  [`& .${treeItemClasses.groupTransition}`]: {
+    marginLeft: 15,
+    paddingLeft: 18,
+    borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
+  },
+  ...theme.applyStyles('light', {
+    color: theme.palette.grey[800],
+  }),
+}));
+
 const MUI_X_PRODUCTS = [
   {
     id: 'Bread',
@@ -59,7 +109,8 @@ const Home = () => {
   const apiRef = useTreeViewApiRef();
 
   const [selectedItem, setSelectedItem] = React.useState(null);
- 
+  const [emailAddress, setEmail] = React.useState( );
+
   const handleSelectedItemsChange = (event, itemId) => {
     if (itemId == null) {
       setSelectedItem(null);
@@ -93,8 +144,33 @@ const Home = () => {
  
     setList([]);
     setTotal(0);
+    setEmail();
   }
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  function handleRemoveItem(id) {
+    const newList = list.filter((item) => item.id !== id);
+
+    setList(newList);
+
+    var tot =0.0;
+    for (let i = 0; i < newList.length; i++) {
+      
+      tot += parseInt(newList[i]['price']);
+    }
+   
+    setTotal(tot);
+
+  }
 
     return (
     <>
@@ -103,45 +179,130 @@ const Home = () => {
         <Grid size={{ xs: 12, md: 2 }}>
           <h1>Menu</h1>
           <Box sx={{   minWidth: 250 }}>
-          <Stack spacing={2}>
-      <Typography>
-        <b>Select Your Ingredients:</b>
-      </Typography>
-        <Box sx={{   minWidth: 300 }}>
-          <RichTreeView
-            items={MUI_X_PRODUCTS}
-            apiRef={apiRef}
-            selectedItems={selectedItem?.id ?? null}
-            onSelectedItemsChange={handleSelectedItemsChange}
-          />
-        </Box>
-      </Stack>
-      </Box>
+            <Stack spacing={2}>
+            <Typography>
+              <b className='textstyle'>Select Your Ingredients:</b>
+            </Typography>
+              <Box sx={{   minWidth: 300 }}>
+                <RichTreeView
+                  items={MUI_X_PRODUCTS}
+                  apiRef={apiRef}
+                  selectedItems={selectedItem?.id ?? null}
+                  onSelectedItemsChange={handleSelectedItemsChange}
+                  defaultExpandedItems={['grid']}
+                  slots={{ item: CustomTreeItem }}
+                />
+              </Box>
+              <React.Fragment>
+              {list && list.length >0
+            ?
+              <Button variant="outlined" onClick={handleClickOpen}>
+                Add E-mail
+              </Button> :""}
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                PaperProps={{
+                  component: 'form',
+                  onSubmit: (event) => {
+                    event.preventDefault();
+                    const formData = new FormData(event.currentTarget);
+                    const formJson = Object.fromEntries(formData.entries());
+                    const email = formJson.email;
+                    
+                    setEmail(email);
+                    handleClose();
+                  },
+                }}
+              >
+                <DialogTitle>E-mail</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    To create your cake , please enter your email address here. We
+                    will send updates occasionally.
+                  </DialogContentText>
+                  <TextField
+                    autoFocus
+                    required
+                    margin="dense"
+                    id="name"
+                    name="email"
+                    label="Email Address"
+                    type="email"
+                    fullWidth
+                    variant="standard"
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>Cancel</Button>
+                  <Button type="submit">Subscribe</Button>
+                </DialogActions>
+              </Dialog>
+            </React.Fragment>
+
+            </Stack>
+          </Box>
           
       </Grid>
         <Grid size={{ xs: 12, md: 10 }}>
           <h1>Home</h1>
           {list && list.length >0
-            ? (<div className='containerTitle'>
+            ? (<><div className='containerTitle'>
               <Typography>
-                <b>Create Your Cake:</b>
+                <b className='textstyle'>Create Your Cake:</b>
                 <Button type="button" onClick={handleRemove}>
                   X
                 </Button>
               </Typography>
-              </div> )
-            : (<p>Select Cake's Ingredients from left menu</p>)
+              </div>
+
+              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                {list.map((item) => (
+                      <>
+                      <ListItem alignItems="flex-start" key={item.id}>
+                        <ListItemAvatar>
+                          <Avatar   >
+                          <CakeIcon/>
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={item.id}
+                          secondary={
+                            <React.Fragment>
+                              <Typography
+                                component="span"
+                                variant="body2"
+                                sx={{ color: 'text.primary', display: 'inline' }}
+                              >
+                               {item.label}<span>_</span>
+                              </Typography>
+                                 $ {item.price} pesos
+                            </React.Fragment>
+                          }
+                        />
+                        <Button type="button" onClick={() => handleRemoveItem(item.id)}>
+                                 X
+                        </Button>
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                      </>
+                ))}
+
+              </List>
+              <div className='containerTitle'>
+                    <Typography>
+                      <b>TOTAL:</b> <span>$ {total}</span>  <span>pesos</span>           
+                    </Typography>
+                    <Typography>
+                      <b>E-MAIL:</b> <span> {emailAddress}</span>
+                    </Typography>
+                </div>
+              </> )
+            : (<Typography> 
+                <b className='textstyle'>Select Cake's Ingredients from the menu</b>
+              </Typography>)
           }
-          <ul>
-            {list.map((item) => (
-            <li key={item.id}>{item.id} ,{item.label} , $ {item.price}</li>
-           ))}
-          </ul>
-          <div className='containerTitle'>
-            <Typography>
-              <b>TOTAL:</b> <span>$ {total}</span>
-            </Typography>
-          </div>
+
         
         </Grid>
       </Grid>

@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid2';
 import '../css/Layout.css';
-import logo from '../logo.svg';
+import logo from '../cake_logo_int.png';
 import Button from '@mui/material/Button';
  
  // <Link to="/">Home</Link>
@@ -13,12 +13,12 @@ const Layout = () => {
 
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        <Grid size={{ xs: 12, md: 3 }}>
+        <Grid size={{ xs: 12, md: 2 }}>
         
       
                 
                 <span>
-                <img src={logo} alt="Logo"  style={{ width: '50%', height: '50px'}} />
+                <img src={logo} alt="Logo"  style={{ width: '30%', height: '50px'}} />
                 </span>      
                 <span className="title">Cakes' Page</span>  
         </Grid>
