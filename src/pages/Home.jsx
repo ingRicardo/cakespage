@@ -7,10 +7,7 @@ import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import Stack from '@mui/material/Stack';
 import '../css/Home.css'
 import Button from '@mui/material/Button';
-
 import { useTreeViewApiRef } from '@mui/x-tree-view/hooks';
-
-
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -19,7 +16,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { styled, alpha } from '@mui/material/styles';
 import { TreeItem, treeItemClasses } from '@mui/x-tree-view/TreeItem';
-
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
@@ -105,9 +101,7 @@ const MUI_X_PRODUCTS = [
 const Home = () => {
   const [list, setList] = React.useState([]);
   const [total, setTotal] = React.useState(0);
-
   const apiRef = useTreeViewApiRef();
-
   const [selectedItem, setSelectedItem] = React.useState(null);
   const [emailAddress, setEmail] = React.useState( );
 
