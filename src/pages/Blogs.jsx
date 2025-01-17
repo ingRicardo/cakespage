@@ -5,6 +5,8 @@ import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import '../css/Blog.css'
+
 const Blogs = () => {
 
   const [inputValue, setInputValue] = React.useState('');
@@ -45,16 +47,14 @@ const Blogs = () => {
         </ul>
         </Grid>
         <Grid size={{ xs: 12, md: 10 }}>
-        <Box>
+        <Box className='maincl'>
           <TextField id="standard-basic" label="add article " variant="standard"  value={inputValue} onChange={handleInputChange}/>
-
-          
           <Button variant="contained" onClick={shoot} size="large">
           Add
         </Button>
-        <div>
+        <React.Fragment>
           { 
-             <>  
+             <div className='maincl' >  
             
             {
               articles.map(r =><>
@@ -66,10 +66,10 @@ const Blogs = () => {
                </>)
             }
             
-             </>
+             </div>
              
           }
-          </div>
+          </React.Fragment>
 
        
         </Box>
