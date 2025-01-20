@@ -53,16 +53,14 @@ const Blogs = () => {
       // Or you can work with it as a plain object:
       const formJson = Object.fromEntries(formData.entries());
  
-    
       setJsonValue(formJson);
 
- 
-
-      const found = articles.filter(articles  =>{
-        if (articles.id == formJson['postId'])
+       articles.filter(articles  =>{
+        if (articles.id ===  parseInt(formJson['postId']))
           setIdValue(articles.id); 
+        return parseInt(formJson['postId']);
       
-    });
+      });
 
  
     }
