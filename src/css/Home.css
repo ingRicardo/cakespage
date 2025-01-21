@@ -10,6 +10,14 @@
  /*   flex-direction: column; */
 }
 
+.containerTotal {
+    
+     display: flex; 
+     align-items: right;
+     justify-content: center;
+  /*   flex-direction: column; */
+ }
+
 .textstyle {
  font-size: 1.2rem;
  font-weight: 500;

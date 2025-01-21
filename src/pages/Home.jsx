@@ -250,7 +250,12 @@ const Home = () => {
               </Typography>
               </div>
 
-              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+              <List sx={{ width: '100%',   bgcolor: 'background.paper' }}>
+                {emailAddress ? (<>
+                  <Typography>
+                    <b>Your E-MAIL:</b> <span> {emailAddress}</span>
+                  </Typography></>) : ''}
+        
                 {list.map((item) => (
                       <>
                       <ListItem alignItems="flex-start" key={item.id}>
@@ -259,7 +264,7 @@ const Home = () => {
                           <CakeIcon/>
                             </Avatar>
                         </ListItemAvatar>
-                        <ListItemText
+                        <ListItemText 
                           primary={item.id}
                           secondary={
                             <React.Fragment>
@@ -283,14 +288,12 @@ const Home = () => {
                 ))}
 
               </List>
-              <div className='containerTitle'>
-                    <Typography>
-                      <b>TOTAL:</b> <span>$ {total}</span>  <span>pesos</span>           
-                    </Typography>
-                    <Typography>
-                      <b>E-MAIL:</b> <span> {emailAddress}</span>
-                    </Typography>
-                </div>
+              <div className='containerTotal'>
+                  <Typography>
+                    <b>TOTAL:</b> <span>$ {total}</span>  <span>pesos</span>           
+                  </Typography>
+
+              </div>
               </> )
             : (<Typography> 
                 <b className='textstyle'>Select Cake's Ingredients from the menu</b>

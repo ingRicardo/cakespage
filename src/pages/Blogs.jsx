@@ -7,6 +7,14 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import '../css/Blog.css'
 
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import StarIcon from '@mui/icons-material/Star';
+
+
 const Blogs = () => {
 
   const [inputValue, setInputValue] = React.useState('');
@@ -65,20 +73,48 @@ const Blogs = () => {
  
     }
 
-
-    return <>
-    <h1>Blog Articles</h1>
-
-    <Box sx={{ flexGrow: 1 }}  >
-      <Grid container spacing={2} >
-        <Grid size={{ xs: 12, md: 2 }}>
-        <ul>
+/*
+    <ul>
         {
           articles.map(r =>
           <li>  {r.id + " " + r.content} </li>
           )
         }
         </ul>
+
+*/
+    return <>
+    <h1>Blog Articles</h1>
+
+    <Box sx={{ flexGrow: 1 }}  >
+      <Grid container spacing={2} >
+        <Grid size={{ xs: 12, md: 2 }}>
+    
+
+        <List
+          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+          aria-label="articles"
+        >
+              {
+          articles.map(r =>
+
+            <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <StarIcon />
+              </ListItemIcon>
+              <ListItemText primary={r.content} />
+            </ListItemButton>
+          </ListItem>
+
+            
+          )
+        }
+
+     
+  
+        </List>
+
         </Grid>
         <Grid size={{ xs: 12, md: 10 }}>
         <Box className='maincl'>

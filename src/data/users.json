@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "Ricardo",
+      "username": "riky",
+      "password": "riky",
+      "email": "ra_mo116@hotmail.com"
+    },
+    {
+        "id": 2,
+        "name": "Alfredo",
+        "username": "alf",
+        "password": "alf",
+        "email": "ramo2884@gmail.com"
+    },
+    {
+        "id": 3,
+        "name": "Vigo",
+        "username": "safi64",
+        "password": "safi64",
+        "email": "safiro@outlook.com"
+      }
+]
