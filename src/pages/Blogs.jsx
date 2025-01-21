@@ -97,26 +97,44 @@ const Blogs = () => {
               articles.map(r =><>
                 <div>  {r.id + " " + r.content} </div>
                   <p>{r.txtcontent}</p>
-                   {idValue === r.id ? (<p> title : {jsonValue.postTitle} comment: {jsonValue.postContent}</p>):""}
+                   {idValue === r.id ? (<p> title : <b>{jsonValue.postTitle}</b> post: <b>{jsonValue.postContent}</b></p>):""}
                   <form method="post" onSubmit={handleSubmit}  >
-                    <label>
-                      Post title: <input name="postTitle" defaultValue="Eating"  />
                      
-                      <input name="postId" defaultValue= {r.id}  type="hidden" />
-                    </label>
-                    <label>
-                      Edit your post:
-                      <textarea
-                        name="postContent"
-                        defaultValue="I really enjoyed eating cakes yesterday!"
-                        rows={4}
-                        cols={40}
-                        
+                  <Box sx={{ flexGrow: 1 }}  >
+                    <Grid container spacing={2} >
+                      <Grid size={{ xs: 6, md: 3 }}>
+                      <TextField
+                        id="outlined-multiline-flexible"
+                        label="Post title"
+                        multiline
+                        maxRows={4}
+                        name="postTitle"
+                        defaultValue="Eating"
                       />
-                    </label>
-                    <hr />
-                    <Button type="reset">Reset edits</Button>
-                    <Button type="submit">Save post</Button>
+                      <input name="postId" defaultValue= {r.id}  type="hidden" />
+                    
+                      </Grid>
+                      <Grid size={{ xs: 6, md: 9 }}>
+                      <TextField fullWidth
+                        id="outlined-multiline-static"
+                        name="postContent"
+                        label="Edit your post"
+                        multiline
+                        rows={4}
+                        defaultValue="I really enjoyed eating cakes yesterday!"
+                      />
+                      </Grid>
+                      <Grid size={{ xs: 12, md: 12 }}>
+                        <hr />
+                      </Grid>
+                      <Grid size={{ xs: 12, md: 12 }}>
+                      <Button type="reset">Reset edits</Button>
+                      <Button type="submit">Save post</Button>
+                      </Grid>
+                    
+      
+                    </Grid>
+                    </Box>
                   </form>
                </>)
             }

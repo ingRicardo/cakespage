@@ -22,7 +22,7 @@ const Layout = () => {
                 </span>      
                 <span className="title">Cakes' Page</span>  
         </Grid>
-        <Grid size={{ xs: 4, md: 3 }}>
+        <Grid size={{ xs: 3, md: 2 }}>
            
            
             <Button href="/" variant="contained" style={{ width: '100%', height: '100%' }}>
@@ -31,7 +31,7 @@ const Layout = () => {
          
 
         </Grid>
-        <Grid size={{ xs: 4, md: 3 }}>
+        <Grid size={{ xs: 3, md: 2 }}>
            
              
             <Button href="/blogs" variant="contained"  style={{ width: '100%', height: '100%' }}>
@@ -39,15 +39,25 @@ const Layout = () => {
             </Button>  
           
         </Grid>
-        <Grid size={{ xs: 4, md: 3}}>
+
+        <Grid size={{ xs: 3, md: 2}}>
            
 
-          <Button href="/contact" variant="contained"  style={{ width: '100%', height: '100%' }}>
-          Contact
-          </Button>  
-         
+           <Button   href="/login" variant="contained"  style={{ width: '100%', height: '100%' }}>
+           Log in
+           </Button>  
+          
+ 
+         </Grid>
+         <Grid size={{ xs: 3, md: 2}}>
+           
 
-        </Grid>
+           <Button href="/contact" variant="contained"  style={{ width: '100%', height: '100%' }}>
+           Contact
+           </Button>  
+          
+ 
+         </Grid>
       </Grid>
     </Box>
 
