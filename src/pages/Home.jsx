@@ -23,6 +23,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import CakeIcon from '@mui/icons-material/Cake';
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
   color: theme.palette.grey[200],
@@ -295,12 +297,52 @@ const Home = () => {
 
               </div>
               </> )
-            : (<Typography> 
+            : (<><Typography> 
                 <b className='textstyle'>Select Cake's Ingredients from the menu</b>
-              </Typography>)
+              </Typography>
+              <div style={{ display: 'block', width: '100%', padding: 30 }}>
+                <h4>Delicious Cakes</h4>
+                <Carousel>
+                  <Carousel.Item interval={2000}>
+                    <img
+                      className="d-block w-100"
+                      src="https://circle-cakes-app.web.app/assets/img/wedding14.jpg"
+                      alt="wedding One"
+                    />
+                    <Carousel.Caption>
+                      <h3>Wedding Cake</h3>
+                      <p>Wedding Cake</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                  <Carousel.Item interval={2000}>
+                    <img
+                      className="d-block w-100"
+                      src="https://circle-cakes-app.web.app/assets/img/birthdaycake.jpg"
+                      alt="birthday Two"
+                    />
+                    <Carousel.Caption>
+                      <h3>Birthday Cake</h3>
+                      <p>Birthday Cake</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                  <Carousel.Item interval={2000}>
+                    <img
+                      className="d-block w-100"
+                      src="https://circle-cakes-app.web.app/assets/img/halloween7.jpg"
+                      alt="halloween Three"
+                    />
+                    <Carousel.Caption>
+                      <h3>Halloween Cake</h3>
+                      <p>Halloween Cake</p>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                </Carousel>
+              </div>
+              
+              </>)
           }
 
-        
+
         </Grid>
       </Grid>
     </Box>
