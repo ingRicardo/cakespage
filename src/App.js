@@ -14,7 +14,7 @@ import NoPage from "./pages/NoPage";
 export const AppContext = createContext();
 
 function App() {
-  const [globalUserState, setGlobalUserState] =  React.useState({ user: "Rik" });
+  const [globalUserState, setGlobalUserState] =  React.useState({ usercont: "Rik" });
 
   return (
     <AppContext.Provider value={{ globalUserState, setGlobalUserState }}>
