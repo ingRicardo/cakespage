@@ -8,46 +8,45 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 import '../css/Login.css'
-import users from '../data/users.json';
-import { useContext } from 'react';
-import {AppContext} from '../App.js'
+
+
+import { useState } from "react";
+import $ from "jquery";
+
+
 const Login = () => {
-    
-  const { setGlobalUserState } = useContext(AppContext);
-  
-  const [userValue, setUserValue] = React.useState('');
-  const handleUserChange = (event) => {
-    setUserValue(event.target.value);
 
-  };
   const [pwdValue, setPwdValue] = React.useState('');
-  const handlePwdChange = (event) => {
-    setPwdValue(event.target.value);
 
+  const [name, setName] = useState("");
+  const [result, setResult] = useState("");
+
+  const handleChange = (e) => {
+      setName(e.target.value);
   };
 
- 
-  const loginfunc = () => {
-    if(userValue!=='' && pwdValue !==''){      
-      
- 
-     
-      users.filter(user  =>{
-        if (user.username ===  userValue && user.password === pwdValue){
-          setGlobalUserState({ user: userValue });
-          alert("Welcome : "+ user.username  );
-          setUserValue('');
-          setPwdValue('');
-        }
-       
-        return userValue;
-      
+  const handleChangePwd = (e) => {
+    setPwdValue(e.target.value);
+};
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      if (name !== '' &&  pwdValue !== ''){
+      const form = $(e.target);
+      $.ajax({
+          type: "POST",
+          url: form.attr("action"),
+          data: form.serialize(),
+          success(data) {
+              setResult(data);
+              localStorage.setItem('user', data);
+          },
       });
 
-      
-    
     }
-  }
+
+
+  };
 
     return <>
     <h1>Log in</h1>
@@ -55,18 +54,46 @@ const Login = () => {
       <Grid container spacing={2} >
  
         <Grid size={{ xs: 12, md: 6 }}>
-          <Box sx={{   minWidth: 250 }} className="mainlog">
-            <div>
-                <TextField id="standard-basic" label="user " fullWidth variant="standard"  value={userValue} onChange={handleUserChange} />
-            </div>
-            <div>
-            <TextField id="standard-pwd" label="password " fullWidth type='password' variant="standard" value={pwdValue} onChange={handlePwdChange}  />
-            </div>
-            <Button variant="contained"  onClick={loginfunc}  size="large">
-                Login
-            </Button>
-        
-          </Box>
+
+        <Box sx={{   minWidth: 250 }} className="mainlog">
+            <form
+                action="https://conisoft.org/cakes/sample.php"
+                method="post"
+                onSubmit={(event) => handleSubmit(event)}
+            >
+              
+                <TextField
+                    type="text"
+                    label="user"
+                    id="name"
+                    name="name"
+                    variant="standard"
+                    value={name}
+                    fullWidth
+                    onChange={(event) =>
+                        handleChange(event)
+                    }
+                />
+                <br />
+                <TextField
+                    type="password"
+                    label="password"
+                    id="pwd"
+                    name="pwd"
+                    fullWidth
+                    variant="standard"
+                    value={pwdValue}
+                    onChange={(event) =>
+                        handleChangePwd(event)
+                    }
+                />
+                <br />
+                <Button variant="contained" type="submit">Submit</Button>
+            </form>
+            {result  ? (<h1>  {result}</h1>) :'' }
+        </Box>
+
+
         </Grid>
  
       </Grid>

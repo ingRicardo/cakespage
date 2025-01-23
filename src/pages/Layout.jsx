@@ -4,20 +4,16 @@ import Grid from '@mui/material/Grid2';
 import '../css/Layout.css';
 import logo from '../cake_logo_int.png';
 import Button from '@mui/material/Button';
-import {  useContext } from 'react';
-import {AppContext} from '../App.js'
 
- // <Link to="/">Home</Link>
+
 const Layout = () => {
-    const { globalUserState } = useContext(AppContext);
-  
   return (
     <>
 
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-      <span>{globalUserState.user ? (<span>   {globalUserState.user} </span>): ''}</span>
-
+      
+      <span>{localStorage.getItem('user')}</span>
         <Grid size={{ xs: 12, md: 2 }}>
         
       
