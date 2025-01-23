@@ -32,14 +32,20 @@ const Login = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
       if (name !== '' &&  pwdValue !== ''){
+
+        // create ajax to find the user 
+
       const form = $(e.target);
       $.ajax({
           type: "POST",
           url: form.attr("action"),
           data: form.serialize(),
           success(data) {
+            if(data !==' '){
               setResult(data);
               localStorage.setItem('user', data);
+            }
+                
           },
       });
 
@@ -90,7 +96,7 @@ const Login = () => {
                 <br />
                 <Button variant="contained" type="submit">Submit</Button>
             </form>
-            {result  ? (<h1>  {result}</h1>) :'' }
+            {result !== ' '  ? (<h1>  {result}</h1>) :'' }
         </Box>
 
 
