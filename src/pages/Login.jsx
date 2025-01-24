@@ -18,6 +18,10 @@ const Login = () => {
   const [username , setUsername ] = React.useState('');
   const [result, setResult] = useState("");
 
+  const handleSignin = (e) => {
+    window.location.href="signin";
+    };
+
   const handleNameChange = (e) => {
     setUsername(e.target.value);
 };
@@ -92,7 +96,8 @@ const Login = () => {
                                         onChange={handlePasswordChange}
                                     />
                                 
-                                <Button variant="contained"   type="submit">Submit</Button>
+                                <Button variant="contained" id="bt1"  type="submit">Submit</Button>
+                                <Button variant="contained"  id="bt2" disabled onClick = {handleSignin}type="text">Sign In</Button>
                             </form>
                             <h1>{result['username']}</h1>
                         </Box>

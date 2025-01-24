@@ -10,6 +10,7 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import  Login  from "./pages/Login";
 import NoPage from "./pages/NoPage";
+import Signin from "./pages/Signin";
 
 export const AppContext = createContext();
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
+          <Route path="signin" element={<Signin />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
