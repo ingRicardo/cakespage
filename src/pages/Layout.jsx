@@ -7,13 +7,22 @@ import Button from '@mui/material/Button';
 
 
 const Layout = () => {
+
+  const handleClickSession = () => {
+    alert("bye "+localStorage.getItem('user'));
+    localStorage.clear();
+    window.location.href="/login";
+  };
+
   return (
     <>
 
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-      
-      <span>{localStorage.getItem('user')}</span>
+      { localStorage.getItem('user') ? (<span>{localStorage.getItem('user')}  
+         <Button onClick={handleClickSession}  variant="text" >logout</Button></span>)
+        : ''
+      }
         <Grid size={{ xs: 12, md: 2 }}>
         
       
