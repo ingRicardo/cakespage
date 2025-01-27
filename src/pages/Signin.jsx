@@ -64,7 +64,7 @@ const Signin = () => {
     }
 
     return <>
-    <h1>Sign In</h1>
+    <h1>Sign Up</h1>
     <Box sx={{ flexGrow: 1 }}  >
         <Grid container spacing={2} >
             <Grid size={{ xs: 12, md: 6 }}>
