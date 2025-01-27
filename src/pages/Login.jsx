@@ -91,13 +91,13 @@ const Login = () => {
                                         type="text"
                                         name="password"
                                         variant="standard"
-                                        label="password"
+                                        label="Password"
                                         fullWidth
                                         onChange={handlePasswordChange}
                                     />
                                 
                                 <Button variant="contained" id="bt1"  type="submit">Submit</Button>
-                                <Button variant="contained"  id="bt2" disabled onClick = {handleSignin}type="text">Sign In</Button>
+                                <Button variant="contained"  id="bt2"  onClick = {handleSignin}type="text">Sign In</Button>
                             </form>
                             <h1>{result['username']}</h1>
                         </Box>
