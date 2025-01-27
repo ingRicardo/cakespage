@@ -1,5 +1,4 @@
 
-//name, username, password, email
 
 import * as React from 'react';
 import Grid from '@mui/material/Grid2';
@@ -8,8 +7,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import '../css/Login.css'
 import axios from "axios";
-//import { useState } from "react";
-//import $ from "jquery";
+
 
 const Signin = () => {
 
@@ -17,9 +15,7 @@ const Signin = () => {
     const [username , setUsername ] = React.useState('');
     const [pwd , setPwd ] = React.useState('');
     const [email , setEmail ] = React.useState('');
-   // const [result, setResult] = useState("");
     
-
     const handleUserNameChange = (e) => {
         setUsername(e.target.value);
     };
@@ -52,28 +48,8 @@ const Signin = () => {
   
         var jsonDataToSend = JSON.stringify(insertdata);
         var url = "https://conisoft.org/cakes/insertuser.php"
-       /* $.ajax({
-           type:'POST',
-           url: "https://conisoft.org/cakes/insertuser.php",
-           data: jsonDataToSend,
-           success:function(data){
-                 console.log("success ", data);
-                setResult(data);
-                if(data['result'] !== ''){
-                    localStorage.setItem('user', data['result']);
-                    alert('welcome : '+data['username']);
-                    window.location.href="/";
-                }
-                  
-           },
-           error: function (data) {
-                
-                console.log("error", data);
-                console.log(JSON.stringify(data));
-            }
-        });
-        */
-        // With Axios
+
+       if (name !=="" && username !== "" && pwd !=="" && email !== "")
         axios
         .post(url, jsonDataToSend)
         .then((response) =>{
@@ -126,7 +102,7 @@ const Signin = () => {
                         onChange={handlePasswordChange}
                     />
                     <TextField
-                        type="mail"
+                        type="email"
                         name="email"
                         label="E-mail"
                         variant="standard"
