@@ -13,10 +13,67 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import StarIcon from '@mui/icons-material/Star';
+import axios from 'axios';
 
+import { useState, useEffect } from 'react';
 
 const Blogs = () => {
+  const [articles, setArticles] = useState([]);
+  var url = "https://conisoft.org/cakes/loadarticles.php";
+  const [newarticle, setNewarticle] = React.useState('');
 
+  const [selectedArticle, setSelectedArticle] = React.useState(null);
+
+  
+  const handleArticleChange = (event) => {
+    setNewarticle(event.target.value);
+  };
+
+  const createArticle = () => {
+    if(newarticle !=='')
+      if(localStorage.getItem('user') && localStorage.getItem('user') !==''){
+        
+        alert(newarticle);
+
+        var articledata = {
+          articlename: newarticle,
+          username: localStorage.getItem('user')
+        };
+
+        var jsonDataToSend = JSON.stringify(articledata);
+        var url = "https://conisoft.org/cakes/insertarticle.php";
+
+        axios
+        .post(url, jsonDataToSend)
+        .then((response) =>{
+            
+            console.log("success ",response.data);
+            window.location.href="blogs";
+        
+        })
+        .catch((error) => console.error(error));
+
+      }else {
+        alert(' log in/ sign up  PLEASE! ' );
+      }
+  
+  }
+  useEffect(() => {
+ 
+      axios.get(url) 
+      .then(response => {
+           // Handle successful response
+           console.log(response.data); // Access response data
+           setArticles(response.data);
+       })
+       .catch(error => {
+           // Handle error 
+          console.error(error);
+       });
+
+  }, [url]);
+
+/*
   const [inputValue, setInputValue] = React.useState('');
   const [idValue, setIdValue] = React.useState('');
 
@@ -72,7 +129,7 @@ const Blogs = () => {
 
  
     }
-
+*/
 /*
     <ul>
         {
@@ -81,11 +138,6 @@ const Blogs = () => {
           )
         }
         </ul>
-
-*/
-    return <>
-    <h1>Blog Articles</h1>
-
     <Box sx={{ flexGrow: 1 }}  >
       <Grid container spacing={2} >
         <Grid size={{ xs: 12, md: 2 }}>
@@ -186,7 +238,55 @@ const Blogs = () => {
         </Grid>
       </Grid>
     </Box>
+          <ul>
+              {articles.map(article => (
+                <li key={article.id}>{article.articlename} {article.username}</li>
+              ))}
+            </ul>
+*/
+const handleArticleClick = (article) => {
+   
+ // console.log('You clicked on ',article['articlename'] );
+  setSelectedArticle(article['articlename'])
+}
 
+    return <>
+    <h1>Blog Articles</h1>
+
+    <Box sx={{ flexGrow: 1 }}  >
+      <Grid container spacing={2} >
+        <Grid size={{ xs: 12, md: 2 }}>
+          <List
+          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+          aria-label="articles">
+          {
+          articles.map(article =>
+            <ListItem key={article.id} disablePadding >
+            <ListItemButton  onClick={() => handleArticleClick(article)}   >
+              <ListItemIcon>
+                <StarIcon />
+              </ListItemIcon>
+              <ListItemText primary={article.articlename} secondary={article.username}/>
+            </ListItemButton>
+          </ListItem>
+          )
+        }
+        </List>
+
+        </Grid>
+        <Grid size={{ xs: 12, md: 10 }}>
+        <Grid>  
+          <TextField id="standard-basic" label="new article " variant="standard"  value={newarticle} onChange={handleArticleChange} />
+          <Button variant="contained" onClick={createArticle} size="large">
+          Add
+        </Button>
+
+        </Grid>
+        <Grid  > <h4>{selectedArticle}</h4>    </Grid>
+        </Grid>
+      </Grid>
+    </Box>
+     
     </>
   };
   
