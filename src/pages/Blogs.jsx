@@ -282,7 +282,45 @@ const handleArticleClick = (article) => {
         </Button>
 
         </Grid>
-        <Grid  > <h4>{selectedArticle}</h4>    </Grid>
+        <Grid  > <h4>{selectedArticle}</h4>   
+        
+        <Box sx={{ flexGrow: 1 }}  >
+                    <Grid container spacing={2} >
+                      <Grid size={{ xs: 6, md: 3 }}>
+                      <TextField
+                        id="outlined-multiline-flexible"
+                        label="Post title"
+                        multiline
+                        maxRows={4}
+                        name="postTitle"
+                        defaultValue=""
+                      />
+                    
+                      </Grid>
+                      <Grid size={{ xs: 6, md: 9 }}>
+                      <TextField fullWidth
+                        id="outlined-multiline-static"
+                        name="postContent"
+                        label="Edit your post"
+                        multiline
+                        rows={4}
+                        defaultValue=""
+                      />
+                      </Grid>
+                      <Grid size={{ xs: 12, md: 12 }}>
+                        <hr />
+                      </Grid>
+                      <Grid size={{ xs: 12, md: 12 }}>
+                        
+                      <Button >Save post</Button>
+                      </Grid>
+                    
+      
+                    </Grid>
+          </Box>
+        
+        
+         </Grid>
         </Grid>
       </Grid>
     </Box>
