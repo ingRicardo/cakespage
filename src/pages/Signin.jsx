@@ -54,7 +54,7 @@ const Signin = () => {
         .post(url, jsonDataToSend)
         .then((response) =>{
             
-            console.log("success ",response.data);
+       //     console.log("success ",response.data);
             localStorage.setItem('user', response.data['result']);
             alert('welcome : '+response.data['result']);
             window.location.href="/";
