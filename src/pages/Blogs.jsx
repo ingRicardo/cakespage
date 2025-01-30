@@ -25,6 +25,10 @@ const Blogs = () => {
 
   const [posttitle, setPosttitle] = React.useState('');
   const [postcontent, setPostcontent] = React.useState('');
+  const [jsonposts, setJsonposts] = React.useState([]);
+  const [jsonallposts, setJsonallposts] = React.useState([]);
+
+
   var url = "https://conisoft.org/cakes/loadarticles.php";
 
 
@@ -110,20 +114,58 @@ const Blogs = () => {
     axios.get(url)
       .then(response => {
         // Handle successful response
-        console.log(response.data); // Access response data
+     //   console.log(response.data); // Access response data
         setSelectedArticle(response.data[0]['articlename']);
         setArticles(response.data);
-/*
+
         var postsbyarticle = {
-          article: selectedArticle
+          article: response.data[0]['articlename']
 
         }
-*/
+
+        var jsonDataToSend = JSON.stringify(postsbyarticle);
+        var url = "https://conisoft.org/cakes/loadposts.php";
+      //  let postarray = [];
+           // array.push(obj);
+        axios
+          .post(url, jsonDataToSend)
+          .then((postrespond) => {
+            /*
+            for (var i =0; i < postrespond.data.length; i++){
+             // console.log(postrespond.data[i]['article'], " _ ", response.data[0]['articlename']);
+              if(postrespond.data[i]['article'] === response.data[0]['articlename'] ){
+                console.log(" success ", postrespond.data[i]);
+             //   setJsonposts(postrespond.data[i]);
+                postarray.push(postrespond.data[i]);
+              }
+            }
+            */
+            setJsonallposts(postrespond.data);
+
+            const filterPostByArticle = () => {
+              return postrespond.data.filter(p => p.article === response.data[0]['articlename']);
+            };
+
+            setJsonposts(filterPostByArticle);
+            //console.log(response.data[0]['articlename']);
+           /*
+            for (var i =0; i < postrespond.data.length; i ++){
+              console.log(postrespond.data[i]);
+              arr.push(postrespond.data[i]);
+              setJsonposts(arr);
+            } */
+           })
+          .catch((error) => console.error(error));
+
+      
+
       })
       .catch(error => {
         // Handle error 
         console.error(error);
       });
+
+    
 
   }, [url]);
 
@@ -304,7 +346,11 @@ const Blogs = () => {
     setSelectedArticle(article['articlename']);
 
 
+    const filterPostByArticle = () => {
+      return jsonallposts.filter(p => p.article === article['articlename']);
+    };
 
+    setJsonposts(filterPostByArticle);
   }
 
   return <>
@@ -340,7 +386,25 @@ const Blogs = () => {
 
           </Grid>
           <Grid  > <h4>{selectedArticle}</h4>
+          <div>
+          {
+              
+             jsonposts.map(paragraph => <> <p>  {paragraph.posttitle} {paragraph.postcomment} user: <b>{paragraph.username}</b></p>  </>)
+/*
+             jsonposts && jsonposts.filter(p => p.article === selectedArticle)
+             .map((p, index) => {
+               return (
+              
+                 <p>{p.article}</p>
+               );
+             })
+*/
 
+            }
+
+
+            
+        </div>
             <Box sx={{ flexGrow: 1 }}  >
               <Grid container spacing={2} >
                 <Grid size={{ xs: 6, md: 3 }}>
