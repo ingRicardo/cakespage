@@ -7,17 +7,16 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import '../css/Login.css'
 
-import { useState } from "react";
-import $ from "jquery";
+//import { useState } from "react";
+//import $ from "jquery";
+import axios from "axios";
 
 
 const Login = () => {
 
- 
   const [pwd , setPwd ] = React.useState('');
   const [username , setUsername ] = React.useState('');
-  const [result, setResult] = useState("");
-
+ 
   const handleSignin = (e) => {
     window.location.href="signin";
     };
@@ -38,7 +37,8 @@ const Login = () => {
       };
 
       var jsonDataToSend = JSON.stringify(post);
-
+      var url= "https://conisoft.org/cakes/sample.php";
+/*
       $.ajax({
          type:'POST',
          url: "https://conisoft.org/cakes/sample.php",
@@ -59,6 +59,21 @@ const Login = () => {
               console.log("error", data);
           }
       });
+      */
+      axios
+      .post(url, jsonDataToSend)
+      .then((response) =>{
+          
+        //  console.log("success ",response.data);        
+        if(response.data['username'] !== ''){
+            localStorage.setItem('user', response.data['username']);
+            alert('welcome : '+response.data['username']);
+            window.location.href="/";
+        }
+      
+      })
+      .catch((error) => console.error(error));
+  
 
   };
  
@@ -99,7 +114,7 @@ const Login = () => {
                                 <Button variant="contained" id="bt1"  type="submit">Submit</Button>
                                 <Button variant="contained"  id="bt2"  onClick = {handleSignin}type="text">Sign Up</Button>
                             </form>
-                            <h1>{result['username']}</h1>
+                            
                         </Box>
                     </Grid>
                 </Grid>
