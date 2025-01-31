@@ -356,7 +356,7 @@ const Blogs = () => {
   return <>
     <h1>Blog Articles</h1>
 
-    <Box sx={{ flexGrow: 1 }}  >
+    <Box sx={{ flexGrow: 1 }} className='maincl' >
       <Grid container spacing={2} >
         <Grid size={{ xs: 12, md: 2 }}>
           <List
