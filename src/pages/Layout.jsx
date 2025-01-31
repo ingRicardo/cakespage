@@ -27,45 +27,52 @@ const Layout = () => {
       
     
         <Grid size={{ xs: 12, md: 2 }}>
+          <Box sx={{ flexGrow: 1 }}>
+              <div>
                 <span>
                 <img src={logo} alt="Logo"  style={{ width: '30%', height: '50px'}} />
                 </span>      
-                <span className="title">Cakes' Page</span>  
+                <span className="title"><b>Cakes' Page</b></span>  
+              </div>
+          </Box>
         </Grid>
-        <Grid size={{ xs: 3, md: 2 }}>
+        <Grid size={{ xs: 3, md: 2 , sm:3}}>
            
-           
+        <Box sx={{ flexGrow: 1 }}>
             <Button href="/" variant="contained" style={{ width: '100%', height: '100%' }}>
               Home
             </Button>  
-         
+         </Box>
 
         </Grid>
-        <Grid size={{ xs: 3, md: 2 }}>
+        <Grid size={{ xs: 3, md: 2 , sm:3}}>
            
-             
+        <Box sx={{ flexGrow: 1 }}>
+
             <Button href="/blogs" variant="contained"  style={{ width: '100%', height: '100%' }}>
             Blogs
             </Button>  
-          
+        </Box>
         </Grid>
 
-        <Grid size={{ xs: 3, md: 2}}>
+        <Grid size={{ xs: 3, md: 2, sm:3}}>
            
+        <Box sx={{ flexGrow: 1 }}>
 
            <Button   href="/login" variant="contained"  style={{ width: '100%', height: '100%' }}>
            Log in
            </Button>  
-          
+        </Box>
  
          </Grid>
-         <Grid size={{ xs: 3, md: 2}}>
+         <Grid size={{ xs: 3, md: 2, sm:3}}>
            
+         <Box sx={{ flexGrow: 1 }}>
 
            <Button href="/contact" variant="contained"  style={{ width: '100%', height: '100%' }}>
            Contact
            </Button>  
-          
+        </Box>          
  
          </Grid>
 

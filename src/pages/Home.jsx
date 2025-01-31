@@ -174,12 +174,12 @@ const Home = () => {
       <Grid container spacing={2} >
         <Grid size={{ xs: 12, md: 2 }}>
           <h1>Menu</h1>
-          <Box sx={{   minWidth: 250 }}>
+          <Box  sx={{ flexGrow: 1 }}>
             <Stack spacing={2}>
             <Typography>
               <b className='textstyle'>Select Your Ingredients:</b>
             </Typography>
-              <Box sx={{   minWidth: 300 }}>
+              <Box sx={{ flexGrow: 1 }}>
                 <RichTreeView
                   items={MUI_X_PRODUCTS}
                   apiRef={apiRef}
@@ -242,6 +242,8 @@ const Home = () => {
       </Grid>
         <Grid size={{ xs: 12, md: 10 }}>
           <h1>Home</h1>
+          <Box  sx={{ flexGrow: 1 }}>
+
           {list && list.length >0
             ? (<><div className='containerTitle'>
               <Typography>
@@ -342,7 +344,7 @@ const Home = () => {
               </>)
           }
 
-
+          </Box>
         </Grid>
       </Grid>
     </Box>
