@@ -36,7 +36,7 @@ const Blogs = () => {
     setNewarticle(event.target.value);
   };
 
-  
+
   const handlePosttitleChange = (event) => {
     setPosttitle(event.target.value);
 
@@ -47,11 +47,11 @@ const Blogs = () => {
   };
 
   const createPost = () => {
-    if (posttitle !== '' &&  postcontent !=='' && selectedArticle !== null)
+    if (posttitle !== '' && postcontent !== '' && selectedArticle !== null)
       if (localStorage.getItem('user') && localStorage.getItem('user') !== '') {
 
 
-        var  postdata = {
+        var postdata = {
           article: selectedArticle,
           posttitle: posttitle,
           postcomment: postcontent,
@@ -62,23 +62,22 @@ const Blogs = () => {
         var url = "https://conisoft.org/cakes/insertpost.php";
 
         axios
-        .post(url, jsonDataToSend)
-        .then((response) =>{
-            
-            console.log("success ",response.data);
-        //    localStorage.setItem('user', response.data['result']);
-            alert('your post was created '+response.data['posttitle']);
-            window.location.href="blogs";
-        
-        })
-        .catch((error) => console.error(error));
+          .post(url, jsonDataToSend)
+          .then((response) => {
 
-    } else {
+            console.log("success ", response.data);
+            alert('your post was created ' + response.data['posttitle']);
+            window.location.href = "blogs";
+
+          })
+          .catch((error) => console.error(error));
+
+      } else {
         alert(' log in/ sign up  PLEASE! ');
       }
 
   }
-  
+
 
   const createArticle = () => {
     if (newarticle !== '')
@@ -113,8 +112,8 @@ const Blogs = () => {
 
     axios.get(url)
       .then(response => {
-        // Handle successful response
-     //   console.log(response.data); // Access response data
+
+        //   console.log(response.data); // Access response data
         setSelectedArticle(response.data[0]['articlename']);
         setArticles(response.data);
 
@@ -125,21 +124,11 @@ const Blogs = () => {
 
         var jsonDataToSend = JSON.stringify(postsbyarticle);
         var url = "https://conisoft.org/cakes/loadposts.php";
-      //  let postarray = [];
-           // array.push(obj);
+
         axios
           .post(url, jsonDataToSend)
           .then((postrespond) => {
-            /*
-            for (var i =0; i < postrespond.data.length; i++){
-             // console.log(postrespond.data[i]['article'], " _ ", response.data[0]['articlename']);
-              if(postrespond.data[i]['article'] === response.data[0]['articlename'] ){
-                console.log(" success ", postrespond.data[i]);
-             //   setJsonposts(postrespond.data[i]);
-                postarray.push(postrespond.data[i]);
-              }
-            }
-            */
+
             setJsonallposts(postrespond.data);
 
             const filterPostByArticle = () => {
@@ -147,17 +136,11 @@ const Blogs = () => {
             };
 
             setJsonposts(filterPostByArticle);
-            //console.log(response.data[0]['articlename']);
-           /*
-            for (var i =0; i < postrespond.data.length; i ++){
-              console.log(postrespond.data[i]);
-              arr.push(postrespond.data[i]);
-              setJsonposts(arr);
-            } */
-           })
+
+          })
           .catch((error) => console.error(error));
 
-      
+
 
       })
       .catch(error => {
@@ -165,181 +148,11 @@ const Blogs = () => {
         console.error(error);
       });
 
-    
+
 
   }, [url]);
 
-  /*
-    const [inputValue, setInputValue] = React.useState('');
-    const [idValue, setIdValue] = React.useState('');
-  
-    var [articles, setArticles] = React.useState(
-      [
-        { id: 1, content: "How to create a fondant cake"  , txtcontent: "great"},
-        { id: 2, content: "I like to bake sweet cakes", txtcontent: "nice"},
-        { id: 3, content: "My favorite dessert is a vanilla cake with banana", txtcontent: "cool"},
-        { id: 4, content: "I love cakes", txtcontent: "pretty well"},
-        { id: 5, content: "This is about selling cakes", txtcontent: "just do it"}
-      ]);
-  
-      const handleInputChange = (event) => {
-        setInputValue(event.target.value);
-  
-      };
-   
-  
-  
-      const shoot = () => {
-        if(inputValue!==''){
-          const newList = articles.concat({ id: articles.length+1, content: inputValue  } );
-          setArticles(newList);
-        }
-      }
-  
-   
-  
-      const [jsonValue, setJsonValue] = React.useState('');
-  
-      function handleSubmit(e) {
-        // Prevent the browser from reloading the page
-        e.preventDefault();
-    
-        // Read the form data
-        const form = e.target;
-        const formData = new FormData(form);
-    
-        // You can pass formData as a fetch body directly:
-       // fetch('/some-api', { method: form.method, body: formData });
-    
-        // Or you can work with it as a plain object:
-        const formJson = Object.fromEntries(formData.entries());
-   
-        setJsonValue(formJson);
-  
-         articles.filter(articles  =>{
-          if (articles.id ===  parseInt(formJson['postId']))
-            setIdValue(articles.id); 
-          return parseInt(formJson['postId']);
-        
-        });
-  
-   
-      }
-  */
-  /*
-      <ul>
-          {
-            articles.map(r =>
-            <li>  {r.id + " " + r.content} </li>
-            )
-          }
-          </ul>
-      <Box sx={{ flexGrow: 1 }}  >
-        <Grid container spacing={2} >
-          <Grid size={{ xs: 12, md: 2 }}>
-      
-  
-          <List
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-            aria-label="articles"
-          >
-                {
-            articles.map(r =>
-  
-              <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <StarIcon />
-                </ListItemIcon>
-                <ListItemText primary={r.content} />
-              </ListItemButton>
-            </ListItem>
-  
-              
-            )
-          }
-  
-       
-    
-          </List>
-  
-          </Grid>
-          <Grid size={{ xs: 12, md: 10 }}>
-          <Box className='maincl'>
-            <TextField id="standard-basic" label="add article " variant="standard"  value={inputValue} onChange={handleInputChange}/>
-            <Button variant="contained" onClick={shoot} size="large">
-            Add
-          </Button>
-   
-          <React.Fragment>
-            { 
-               <div className='maincl' >  
-               
-              {
-                
-                
-                articles.map(r =><>
-                  <div>  {r.id + " " + r.content} </div>
-                    <p>{r.txtcontent}</p>
-                     {idValue === r.id ? (<p> title : <b>{jsonValue.postTitle}</b> post: <b>{jsonValue.postContent}</b></p>):""}
-                    <form method="post" onSubmit={handleSubmit}  >
-                       
-                    <Box sx={{ flexGrow: 1 }}  >
-                      <Grid container spacing={2} >
-                        <Grid size={{ xs: 6, md: 3 }}>
-                        <TextField
-                          id="outlined-multiline-flexible"
-                          label="Post title"
-                          multiline
-                          maxRows={4}
-                          name="postTitle"
-                          defaultValue="Eating"
-                        />
-                        <input name="postId" defaultValue= {r.id}  type="hidden" />
-                      
-                        </Grid>
-                        <Grid size={{ xs: 6, md: 9 }}>
-                        <TextField fullWidth
-                          id="outlined-multiline-static"
-                          name="postContent"
-                          label="Edit your post"
-                          multiline
-                          rows={4}
-                          defaultValue="I really enjoyed eating cakes yesterday!"
-                        />
-                        </Grid>
-                        <Grid size={{ xs: 12, md: 12 }}>
-                          <hr />
-                        </Grid>
-                        <Grid size={{ xs: 12, md: 12 }}>
-                        <Button type="reset">Reset edits</Button>
-                        <Button type="submit">Save post</Button>
-                        </Grid>
-                      
-        
-                      </Grid>
-                      </Box>
-                    </form>
-                 </>)
-              }
-              
-               </div>
-               
-            }
-            </React.Fragment>
-  
-         
-          </Box>
-  
-          </Grid>
-        </Grid>
-      </Box>
-            <ul>
-                {articles.map(article => (
-                  <li key={article.id}>{article.articlename} {article.username}</li>
-                ))}
-              </ul>
-  */
+
   const handleArticleClick = (article) => {
 
     // console.log('You clicked on ',article['articlename'] );
@@ -386,25 +199,13 @@ const Blogs = () => {
 
           </Grid>
           <Grid  > <h4>{selectedArticle}</h4>
-          <div>
-          {
-              
-             jsonposts.map(paragraph => <> <p>  {paragraph.posttitle} {paragraph.postcomment} user: <b>{paragraph.username}</b></p>  </>)
-/*
-             jsonposts && jsonposts.filter(p => p.article === selectedArticle)
-             .map((p, index) => {
-               return (
-              
-                 <p>{p.article}</p>
-               );
-             })
-*/
+            <div>
+              {
+                jsonposts.map(paragraph => <> <p>  {paragraph.posttitle} {paragraph.postcomment} user: <b>{paragraph.username}</b></p>  </>)
 
-            }
+              }
 
-
-            
-        </div>
+            </div>
             <Box sx={{ flexGrow: 1 }}  >
               <Grid container spacing={2} >
                 <Grid size={{ xs: 6, md: 3 }}>
@@ -431,9 +232,6 @@ const Blogs = () => {
                   />
                 </Grid>
                 <Grid size={{ xs: 12, md: 12 }}>
-
-     
-
                 </Grid>
                 <Grid size={{ xs: 12, md: 12 }}>
                   <hr />
