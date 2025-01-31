@@ -19,14 +19,14 @@ const Layout = () => {
 
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-      { localStorage.getItem('user') ? (<span>{localStorage.getItem('user')}  
-         <Button onClick={handleClickSession}  variant="text" >logout</Button></span>)
-        : ''
-      }
-        <Grid size={{ xs: 12, md: 2 }}>
-        
       
-                
+       { localStorage.getItem('user') ? (<div className="mainlayout"><span><b>{localStorage.getItem('user')}</b>  
+         <Button onClick={handleClickSession}  variant="text" >logout</Button></span></div>)
+        : <div className="mainlayout"><span >Guest</span></div>
+      }
+      
+    
+        <Grid size={{ xs: 12, md: 2 }}>
                 <span>
                 <img src={logo} alt="Logo"  style={{ width: '30%', height: '50px'}} />
                 </span>      
@@ -68,6 +68,8 @@ const Layout = () => {
           
  
          </Grid>
+
+
       </Grid>
     </Box>
 
