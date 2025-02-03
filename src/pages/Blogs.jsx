@@ -15,6 +15,13 @@ import ListItemText from '@mui/material/ListItemText';
 import StarIcon from '@mui/icons-material/Star';
 import axios from 'axios';
 
+
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+
+
+
 import { useState, useEffect } from 'react';
 
 const Blogs = () => {
@@ -152,7 +159,20 @@ const Blogs = () => {
 
   }, [url]);
 
+/*
+            <div>
+              {
+                jsonposts.map(paragraph => <> 
+                
+                <p> <span>Title: </span> <b>{paragraph.posttitle}</b>  {paragraph.postcomment}, user: <b>{paragraph.username}</b>
+                
+                </p>  </>)
 
+              }
+
+            </div>
+
+* */
   const handleArticleClick = (article) => {
 
     // console.log('You clicked on ',article['articlename'] );
@@ -199,13 +219,29 @@ const Blogs = () => {
 
           </Grid>
           <Grid  > <h4>{selectedArticle}</h4>
-            <div>
-              {
-                jsonposts.map(paragraph => <> <p>  {paragraph.posttitle} {paragraph.postcomment} user: <b>{paragraph.username}</b></p>  </>)
 
-              }
+          <List sx={{ width: '100%',  bgcolor: 'background.paper' }}>
 
-            </div>
+
+          {
+          jsonposts.map(paragraph =><>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+                <BeachAccessIcon />
+              </Avatar>
+             
+            </ListItemAvatar> 
+            <ListItemText primary={paragraph.posttitle} secondary={paragraph.postcomment }  />
+          </ListItem>
+           <div> user: {paragraph.username}   </div>
+         
+          </>)
+         }
+
+
+        </List>
+
             <Box sx={{ flexGrow: 1 }}  >
               <Grid container spacing={2} >
                 <Grid size={{ xs: 6, md: 3 }}>
