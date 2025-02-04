@@ -299,9 +299,7 @@ const Home = () => {
 
               </div>
               </> )
-            : (<><Typography> 
-                <b className='textstyle'>Select Cake's Ingredients from the menu</b>
-              </Typography>
+            : (<> 
               <div style={{ display: 'block', width: '100%', padding: 30 }}>
                 <h4>Delicious Cakes</h4>
                 <Carousel>

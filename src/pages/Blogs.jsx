@@ -191,7 +191,7 @@ const Blogs = () => {
 
     <Box sx={{ flexGrow: 1 }} className='maincl' >
       <Grid container spacing={2} >
-        <Grid size={{ xs: 4, md: 2 }}>
+        <Grid size={{ xs: 5, md: 2 }}>
           <List
             sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
             aria-label="articles">
@@ -216,7 +216,7 @@ const Blogs = () => {
           </List>
 
         </Grid>
-        <Grid size={{ xs: 8, md: 10 }}>
+        <Grid size={{ xs: 7, md: 10 }}>
  
     
           <Grid  > <span>Article:</span>   <span><b>{selectedArticle}</b></span>
@@ -245,7 +245,7 @@ const Blogs = () => {
 
             <Box sx={{ flexGrow: 1 }}  >
               <Grid container spacing={2} >
-                <Grid size={{ xs: 6, md: 3 }}>
+                <Grid size={{ xs: 12, md: 12 }}>
                   <TextField
                     id="outlined-multiline-flexible"
                     label="Post title"
@@ -257,7 +257,7 @@ const Blogs = () => {
                   />
 
                 </Grid>
-                <Grid size={{ xs: 6, md: 9 }}>
+                <Grid size={{ xs: 12, md: 12 }}>
                   <TextField fullWidth
                     id="outlined-multiline-static"
                     name="postcontent"
