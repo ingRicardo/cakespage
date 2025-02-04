@@ -182,48 +182,48 @@ const Home = () => {
                     </Button>
                   </Typography>
                 </div>
-<div className='scrollcontainer'>
-                  <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                    {emailAddress ? (<>
+                  <div className='scrollcontainer'>
+                    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                      {emailAddress ? (<>
+                        <Typography>
+                          <b>Your E-MAIL:</b> <span> {emailAddress}</span>
+                        </Typography></>) : ''}
+
+                      {list.map((item) => (
+                        <>
+                          <ListItem alignItems="flex-start" key={item.id}>
+
+                            <ListItemText
+                              primary={item.id}
+                              secondary={
+                                <React.Fragment>
+                                  <Typography
+                                    component="span"
+                                    variant="body2"
+                                    sx={{ color: 'text.primary', display: 'inline' }}
+                                  >
+                                    {item.label}<span>_</span>
+                                  </Typography>
+                                  $ {item.price} pesos
+                                </React.Fragment>
+                              }
+                            />
+                            <Button type="button" onClick={() => handleRemoveItem(item.id)}>
+                              X
+                            </Button>
+                          </ListItem>
+                          <Divider variant="inset" component="li" />
+                        </>
+                      ))}
+
+                    </List>
+
+                    <div className='containerTotal'>
                       <Typography>
-                        <b>Your E-MAIL:</b> <span> {emailAddress}</span>
-                      </Typography></>) : ''}
-
-                    {list.map((item) => (
-                      <>
-                        <ListItem alignItems="flex-start" key={item.id}>
-
-                          <ListItemText
-                            primary={item.id}
-                            secondary={
-                              <React.Fragment>
-                                <Typography
-                                  component="span"
-                                  variant="body2"
-                                  sx={{ color: 'text.primary', display: 'inline' }}
-                                >
-                                  {item.label}<span>_</span>
-                                </Typography>
-                                $ {item.price} pesos
-                              </React.Fragment>
-                            }
-                          />
-                          <Button type="button" onClick={() => handleRemoveItem(item.id)}>
-                            X
-                          </Button>
-                        </ListItem>
-                        <Divider variant="inset" component="li" />
-                      </>
-                    ))}
-
-                  </List>
-
-                  <div className='containerTotal'>
-                    <Typography>
-                      <b>TOTAL:</b> <span>$ {total}</span>  <span>pesos</span>
-                    </Typography>
+                        <b>TOTAL:</b> <span>$ {total}</span>  <span>pesos</span>
+                      </Typography>
+                    </div>
                   </div>
-  </div>
 
                 </>)
                 : (<>
