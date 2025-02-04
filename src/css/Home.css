@@ -22,3 +22,11 @@
  font-size: 1.2rem;
  font-weight: 500;
 }
+
+.scrollcontainer {
+   padding: 5px;
+    
+   height: 410px;
+   overflow-x: hidden;
+   overflow-y: auto;
+}

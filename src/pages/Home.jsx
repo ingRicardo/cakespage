@@ -182,7 +182,7 @@ const Home = () => {
                     </Button>
                   </Typography>
                 </div>
-
+<div className='scrollcontainer'>
                   <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
                     {emailAddress ? (<>
                       <Typography>
@@ -217,11 +217,13 @@ const Home = () => {
                     ))}
 
                   </List>
+
                   <div className='containerTotal'>
                     <Typography>
                       <b>TOTAL:</b> <span>$ {total}</span>  <span>pesos</span>
                     </Typography>
                   </div>
+  </div>
 
                 </>)
                 : (<>
