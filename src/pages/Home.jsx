@@ -172,75 +172,7 @@ const Home = () => {
     <>
     <Box sx={{ flexGrow: 1 }}  >
       <Grid container spacing={2} >
-        <Grid size={{ xs: 4, md: 2 }}>
-          <h1>Menu</h1>
-          <Box  sx={{ flexGrow: 1 }}>
-            <Stack spacing={2}>
-            <Typography>
-              <b className='textstyle'>Select Your Ingredients:</b>
-            </Typography>
-              <Box sx={{ flexGrow: 1 }}>
-                <RichTreeView
-                  items={MUI_X_PRODUCTS}
-                  apiRef={apiRef}
-                  selectedItems={selectedItem?.id ?? null}
-                  onSelectedItemsChange={handleSelectedItemsChange}
-                  defaultExpandedItems={['grid']}
-                  slots={{ item: CustomTreeItem }}
-                />
-              </Box>
-              <React.Fragment>
-              {list && list.length >0
-            ?
-              <Button variant="outlined" onClick={handleClickOpen}>
-                Add E-mail
-              </Button> :""}
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                  component: 'form',
-                  onSubmit: (event) => {
-                    event.preventDefault();
-                    const formData = new FormData(event.currentTarget);
-                    const formJson = Object.fromEntries(formData.entries());
-                    const email = formJson.email;
-                    
-                    setEmail(email);
-                    handleClose();
-                  },
-                }}
-              >
-                <DialogTitle>E-mail</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    To create your cake , please enter your email address here. We
-                    will send updates occasionally.
-                  </DialogContentText>
-                  <TextField
-                    autoFocus
-                    required
-                    margin="dense"
-                    id="name"
-                    name="email"
-                    label="Email Address"
-                    type="email"
-                    fullWidth
-                    variant="standard"
-                  />
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <Button type="submit">Subscribe</Button>
-                </DialogActions>
-              </Dialog>
-            </React.Fragment>
-
-            </Stack>
-          </Box>
-          
-      </Grid>
-        <Grid size={{ xs: 8, md: 10 }}>
+      <Grid size={{ xs: 6, md: 6 }}>
           <h1>Home</h1>
           <Box  sx={{ flexGrow: 1 }}>
 
@@ -344,6 +276,75 @@ const Home = () => {
 
           </Box>
         </Grid>
+        <Grid size={{ xs: 6, md: 6 }}>
+           
+          <Box  sx={{ flexGrow: 1 }}>
+            <Stack spacing={2}>
+            <Typography>
+              <b className='textstyle'>Select Your Ingredients:</b>
+            </Typography>
+              <Box sx={{ flexGrow: 1 }}>
+                <RichTreeView
+                  items={MUI_X_PRODUCTS}
+                  apiRef={apiRef}
+                  selectedItems={selectedItem?.id ?? null}
+                  onSelectedItemsChange={handleSelectedItemsChange}
+                  defaultExpandedItems={['grid']}
+                  slots={{ item: CustomTreeItem }}
+                />
+              </Box>
+              <React.Fragment>
+              {list && list.length >0
+            ?
+              <Button variant="outlined" onClick={handleClickOpen}>
+                Add E-mail
+              </Button> :""}
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                PaperProps={{
+                  component: 'form',
+                  onSubmit: (event) => {
+                    event.preventDefault();
+                    const formData = new FormData(event.currentTarget);
+                    const formJson = Object.fromEntries(formData.entries());
+                    const email = formJson.email;
+                    
+                    setEmail(email);
+                    handleClose();
+                  },
+                }}
+              >
+                <DialogTitle>E-mail</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    To create your cake , please enter your email address here. We
+                    will send updates occasionally.
+                  </DialogContentText>
+                  <TextField
+                    autoFocus
+                    required
+                    margin="dense"
+                    id="name"
+                    name="email"
+                    label="Email Address"
+                    type="email"
+                    fullWidth
+                    variant="standard"
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>Cancel</Button>
+                  <Button type="submit">Subscribe</Button>
+                </DialogActions>
+              </Dialog>
+            </React.Fragment>
+
+            </Stack>
+          </Box>
+          
+      </Grid>
+
       </Grid>
     </Box>
     </>
