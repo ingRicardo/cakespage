@@ -195,6 +195,12 @@ const Blogs = () => {
           <List
             sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
             aria-label="articles">
+              <ListItem   disablePadding >
+              <TextField id="standard-basic" label="new article " variant="standard" value={newarticle} onChange={handleArticleChange} />
+            <Button variant="contained" onClick={createArticle}  >
+             Add 
+            </Button>
+              </ListItem>
             {
               articles.map(article =>
                 <ListItem key={article.id} disablePadding >
@@ -211,14 +217,9 @@ const Blogs = () => {
 
         </Grid>
         <Grid size={{ xs: 12, md: 10 }}>
-          <Grid>
-            <TextField id="standard-basic" label="new article " variant="standard" value={newarticle} onChange={handleArticleChange} />
-            <Button variant="contained" onClick={createArticle} size="large">
-              Add
-            </Button>
-
-          </Grid>
-          <Grid  > <h4>{selectedArticle}</h4>
+ 
+    
+          <Grid  > <span>Article:</span>   <span><b>{selectedArticle}</b></span>
 
           <List sx={{ width: '100%',  bgcolor: 'background.paper' }}>
 
@@ -269,14 +270,13 @@ const Blogs = () => {
                 </Grid>
                 <Grid size={{ xs: 12, md: 12 }}>
                 </Grid>
+
+                <Grid size={{ xs: 12, md: 12 }}>
+                  <Button variant="contained" onClick={createPost}>Save post</Button>
+                </Grid>
                 <Grid size={{ xs: 12, md: 12 }}>
                   <hr />
                 </Grid>
-                <Grid size={{ xs: 12, md: 12 }}>
-
-                  <Button variant="contained" onClick={createPost}>Save post</Button>
-                </Grid>
-
 
               </Grid>
             </Box>
