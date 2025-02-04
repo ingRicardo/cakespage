@@ -172,7 +172,7 @@ const Home = () => {
     <>
     <Box sx={{ flexGrow: 1 }}  >
       <Grid container spacing={2} >
-        <Grid size={{ xs: 12, md: 2 }}>
+        <Grid size={{ xs: 4, md: 2 }}>
           <h1>Menu</h1>
           <Box  sx={{ flexGrow: 1 }}>
             <Stack spacing={2}>
@@ -240,7 +240,7 @@ const Home = () => {
           </Box>
           
       </Grid>
-        <Grid size={{ xs: 12, md: 10 }}>
+        <Grid size={{ xs: 8, md: 10 }}>
           <h1>Home</h1>
           <Box  sx={{ flexGrow: 1 }}>
 
