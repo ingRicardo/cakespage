@@ -179,7 +179,7 @@ const Home = () => {
           {list && list.length >0
             ? (<><div className='containerTitle'>
               <Typography>
-                <b className='textstyle'>Create Your Cake:</b>
+                <b className='textstyle'>Your Cake:</b>
                 <Button type="button" onClick={handleRemove}>
                   X
                 </Button>
@@ -195,11 +195,7 @@ const Home = () => {
                 {list.map((item) => (
                       <>
                       <ListItem alignItems="flex-start" key={item.id}>
-                        <ListItemAvatar>
-                          <Avatar   >
-                          <CakeIcon/>
-                            </Avatar>
-                        </ListItemAvatar>
+          
                         <ListItemText 
                           primary={item.id}
                           secondary={
@@ -281,7 +277,7 @@ const Home = () => {
           <Box  sx={{ flexGrow: 1 }}>
             <Stack spacing={2}>
             <Typography>
-              <b className='textstyle'>Select Your Ingredients:</b>
+              <b className='textstyle'>Ingredients:</b>
             </Typography>
               <Box sx={{ flexGrow: 1 }}>
                 <RichTreeView
