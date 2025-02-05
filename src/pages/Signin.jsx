@@ -54,11 +54,15 @@ const Signin = () => {
         .post(url, jsonDataToSend)
         .then((response) =>{
             
-       //     console.log("success ",response.data);
-            localStorage.setItem('user', response.data['result']);
-            alert('welcome : '+response.data['result']);
-            window.location.href="/";
-        
+            //console.log("success ",response.data);
+            if (response.data['result'] !=='' && response.data['result'] !== "User already exits"){
+                localStorage.setItem('user', response.data['result']);
+                alert('welcome : '+response.data['result']);
+                window.location.href="/";    
+            }else{
+                alert(response.data['result']);
+            }
+                    
         })
         .catch((error) => console.error(error));
     }
