@@ -6,9 +6,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import '../css/Login.css'
-
-//import { useState } from "react";
-//import $ from "jquery";
 import axios from "axios";
 
 
@@ -38,28 +35,7 @@ const Login = () => {
 
       var jsonDataToSend = JSON.stringify(post);
       var url= "https://conisoft.org/cakes/sample.php";
-/*
-      $.ajax({
-         type:'POST',
-         url: "https://conisoft.org/cakes/sample.php",
-         data: jsonDataToSend,
-         success:function(data){
 
-             // console.log("success ", data);
-              setResult(data);
-              if(data['username'] !== ''){
-                localStorage.setItem('user', data['username']);
-                alert('welcome : '+data['username']);
-                window.location.href="/";
-              }
-                
-         },
-         error: function (data) {
-
-              console.log("error", data);
-          }
-      });
-      */
       axios
       .post(url, jsonDataToSend)
       .then((response) =>{
@@ -74,7 +50,6 @@ const Login = () => {
       })
       .catch((error) => console.error(error));
   
-
   };
  
       return (
