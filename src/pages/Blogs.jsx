@@ -192,6 +192,7 @@ const Blogs = () => {
     <Box sx={{ flexGrow: 1 }} className='maincl' >
       <Grid container spacing={2} >
         <Grid size={{ xs: 5, md: 2 }}>
+          <div className='scrollcontainer'>
           <List
             sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
             aria-label="articles">
@@ -214,7 +215,7 @@ const Blogs = () => {
               )
             }
           </List>
-
+          </div>
         </Grid>
         <Grid size={{ xs: 7, md: 10 }}>
  
