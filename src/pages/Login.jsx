@@ -10,7 +10,7 @@ import axios from "axios";
 
 
 const Login = () => {
-
+  const [errmsg , setErrmsg ] = React.useState('');
   const [pwd , setPwd ] = React.useState('');
   const [username , setUsername ] = React.useState('');
  
@@ -39,12 +39,13 @@ const Login = () => {
       axios
       .post(url, jsonDataToSend)
       .then((response) =>{
-          
-        //  console.log("success ",response.data);        
+               
         if(response.data['username'] !== ''){
             localStorage.setItem('user', response.data['username']);
             alert('welcome : '+response.data['username']);
             window.location.href="/";
+        }else if (response.data['username'] === '') {
+            setErrmsg("Invalid Data");
         }
       
       })
@@ -89,7 +90,7 @@ const Login = () => {
                                 <Button variant="contained" id="bt1"  type="submit">Submit</Button>
                                 <Button variant="contained"  id="bt2"  onClick = {handleSignin}type="text">Sign Up</Button>
                             </form>
-                            
+                           <span className='errclass'>{errmsg}</span> 
                         </Box>
                     </Grid>
                 </Grid>
