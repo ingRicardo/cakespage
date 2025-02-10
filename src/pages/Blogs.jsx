@@ -159,20 +159,7 @@ const Blogs = () => {
 
   }, [url]);
 
-/*
-            <div>
-              {
-                jsonposts.map(paragraph => <> 
-                
-                <p> <span>Title: </span> <b>{paragraph.posttitle}</b>  {paragraph.postcomment}, user: <b>{paragraph.username}</b>
-                
-                </p>  </>)
 
-              }
-
-            </div>
-
-* */
   const handleArticleClick = (article) => {
 
     // console.log('You clicked on ',article['articlename'] );
@@ -237,7 +224,9 @@ const Blogs = () => {
             <ListItemText primary={paragraph.posttitle} secondary={paragraph.postcomment }  />
           </ListItem>
            <div> user: {paragraph.username}   </div>
-         
+           <Grid size={{ xs: 12, md: 12 }}>
+                  <hr />
+          </Grid>
           </>)
          }
 

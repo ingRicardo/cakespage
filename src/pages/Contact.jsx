@@ -33,6 +33,9 @@ const Contact = () => {
                                 Riky Macias
                             </Typography>
                             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                Computer Enginner
+                            </Typography>
+                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                                 E-mail: ramo2884@gmail.com
                             </Typography>
                             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
