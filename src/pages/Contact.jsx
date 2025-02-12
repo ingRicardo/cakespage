@@ -7,8 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
-
-
+import WorkIcon from '@mui/icons-material/Work';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import '../css/contact.css'
 
 
@@ -33,13 +34,13 @@ const Contact = () => {
                                 Riky Macias
                             </Typography>
                             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                Computer Enginner
+                              <WorkIcon/>  Computer Enginner
                             </Typography>
                             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                E-mail: ramo2884@gmail.com
+                              <AlternateEmailIcon/>ramo2884@gmail.com
                             </Typography>
                             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                Cellphone: 6641268391
+                              <PhoneAndroidIcon/>6641268391
                             </Typography>
                         </CardContent>
                         <CardActions>
