@@ -23,7 +23,7 @@ const Contact = () => {
 
             <Grid container spacing={2}    >
                 <Grid size={{ xs: 12, md: 12 }} >
-                    <Card sx={{}} style={{ width: 470 }}>
+                    <Card sx={{}} style={{ width: 400 }}>
                         <CardMedia
                             sx={{ height: 650 }}
                             image={riky}
