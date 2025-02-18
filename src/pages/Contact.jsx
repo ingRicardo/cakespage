@@ -11,6 +11,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import '../css/contact.css'
+import riky from '../images/rikyhappy.jpg';
 
 
 const Contact = () => {
@@ -24,8 +25,8 @@ const Contact = () => {
                 <Grid size={{ xs: 12, md: 12 }} >
                     <Card sx={{}} style={{ width: 470 }}>
                         <CardMedia
-                            sx={{ height: 700 }}
-                            image="https://scontent.ftij1-3.fna.fbcdn.net/v/t39.30808-6/465419538_10162068417375359_5459318880259107201_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeFp1m3-Y24q0cUb0bGeWspmAjM4uILI6ucCMzi4gsjq54EFwnUZYLfAH8c2MXSlDu4&_nc_ohc=FELqBlEVDLAQ7kNvgHJKHBG&_nc_zt=23&_nc_ht=scontent.ftij1-3.fna&_nc_gid=AMnYJBU7cxLOOSWEbz6SRWs&oh=00_AYAjGkCjm6KwntcaleX6A6xUj_AGDYIdmWX3I-vrWtfCRA&oe=67A81F41"
+                            sx={{ height: 650 }}
+                            image={riky}
                             title="Riky"
 
                         />
